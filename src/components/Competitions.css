@@ -1,0 +1,51 @@
+.container {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Para centrar verticalmente */
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 10px;
+    margin: 5px 0;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  li:hover {
+    background-color: #e0e0e0;
+  }
+  
+  .selected-competition {
+    margin-top: 20px;
+  }
+  
+  h3 {
+    color: #555;
+  }
+  
+  .team-list li {
+    padding: 8px;
+    margin: 4px 0;
+    background-color: #e9e9e9;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
