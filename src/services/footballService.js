@@ -62,11 +62,35 @@ export const getTeamsByCompetition = async (competitionId) => {
   }
 };
 
+export const getNextMatchByTeam = async (competitionId, teamId) => {
+  try {
+    const response = await api.get(`/competitions/${competitionId}/matches`);
+    const matches = response.data.matches;
+    const currentDate = new Date();
+
+    // Filtra los partidos que aún no se han jugado y en los que participará el equipo seleccionado
+    const upcomingMatches = matches.filter(match => {
+      const matchDate = new Date(match.utcDate);
+      const isUpcoming = matchDate > currentDate;
+      const teamPlays = Number(match.homeTeam.id) === Number(teamId) || 
+                      Number(match.awayTeam.id) === Number(teamId);
+      return isUpcoming && teamPlays;
+    });
+
+    // Ordena los partidos por fecha en orden ascendente (el más cercano primero)
+    upcomingMatches.sort((a, b) => new Date(a.utcDate) - new Date(b.utcDate));
+
+    // Devuelve el próximo partido
+    return upcomingMatches.length > 0 ? upcomingMatches[0] : null;
+  } catch (error) {
+    console.error('Error fetching matches:', error);
+    throw new Error(handleApiError(error));
+  }
+};
+
 export const getLastMatchByTeam = async (competitionId, teamId) => {
   try {
-    const response = await retryRequest(() =>
-      api.get(`/competitions/${competitionId}/matches`)
-    );
+    const response = await api.get(`/competitions/${competitionId}/matches`);
     const matches = response.data.matches;
 
     // Filtra los partidos que ya han sido jugados y en los que participó el equipo seleccionado

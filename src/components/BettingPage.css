@@ -1,0 +1,102 @@
+.betting-tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-button {
+  flex: 1;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border: none;
+  border-bottom: 3px solid #ddd;
+  cursor: pointer;
+  font-weight: bold;
+  color: #6c757d;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  background-color: #e9ecef;
+}
+
+.tab-button.active {
+  background-color: #fff;
+  color: #ff6f61;
+  border-bottom-color: #ff6f61;
+}
+
+.no-bets-message {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+  text-align: center;
+  color: #6c757d;
+}
+
+.bet-history {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.bet-history h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.history-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.history-item {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.history-item.won {
+  border-left: 4px solid #2ecc71;
+}
+
+.history-item.lost {
+  border-left: 4px solid #e74c3c;
+}
+
+.history-header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f2f6;
+}
+
+.history-item.won .bet-result {
+  color: #2ecc71;
+  font-weight: bold;
+}
+
+.history-item.lost .bet-result {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.history-details {
+  padding: 15px;
+}
+
+.history-details p {
+  margin: 8px 0;
+  color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .history-list {
+    grid-template-columns: 1fr;
+  }
+} 

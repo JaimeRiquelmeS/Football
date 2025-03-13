@@ -318,4 +318,86 @@
   100% {
     opacity: 1;
   }
+}
+
+/* Estilos para NextMatch */
+.vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
+  padding: 0 20px;
+}
+
+.countdown {
+  font-size: 18px;
+  font-weight: bold;
+  color: #e74c3c;
+  text-align: center;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: rgba(231, 76, 60, 0.1);
+  border-radius: 8px;
+}
+
+.match-stats {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.match-stats h3 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.no-data {
+  color: #7f8c8d;
+  font-style: italic;
+  text-align: center;
+  padding: 10px;
+}
+
+/* Estilos para estados del partido */
+.match-status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: white;
+}
+
+.match-status.scheduled {
+  background-color: #3498db;
+}
+
+.match-status.postponed {
+  background-color: #f39c12;
+}
+
+.match-status.canceled {
+  background-color: #e74c3c;
+}
+
+/* Animación de cuenta regresiva */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.countdown {
+  animation: pulse 2s infinite;
 } 

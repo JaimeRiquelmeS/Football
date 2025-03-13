@@ -1,5 +1,6 @@
 import React from 'react';
 import './LastMatch.css';
+import BettingWidget from './betting/BettingWidget';
 
 const getPositionTitle = (position) => {
   const positionMap = {
@@ -114,6 +115,8 @@ const LastMatch = ({ match, players }) => {
         <p>Competición: {matchDetails.competition?.name || 'No disponible'}</p>
         <p>Jornada: {matchDetails.matchday || 'No disponible'}</p>
       </div>
+
+      <BettingWidget match={match} />
 
       {!hasPlayers ? (
         <div className="no-players-message">

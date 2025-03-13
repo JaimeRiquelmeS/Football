@@ -257,3 +257,354 @@ h3 {
     position: relative;
     bottom: 0;
 }
+
+/* src/components/betting/BettingWidget.css */
+.betting-widget {
+  margin-top: 20px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.betting-toggle {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.betting-toggle:hover {
+  background: linear-gradient(to right, #2980b9, #27ae60);
+}
+
+.betting-content {
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.betting-content h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.betting-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.more-options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.bet-option {
+  flex: 1;
+  padding: 15px;
+  margin: 0 5px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+.bet-option:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+}
+
+.bet-option.selected {
+  border-color: #3498db;
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+.team-name {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.odds {
+  display: inline-block;
+  background-color: #3498db;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.bet-amount {
+  margin: 15px 0;
+}
+
+.bet-amount label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.bet-amount input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.potential-win {
+  background-color: #f1f8e9;
+  border-left: 4px solid #8bc34a;
+  padding: 10px;
+  margin: 15px 0;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.potential-win span {
+  color: #689f38;
+}
+
+.place-bet-button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.place-bet-button:hover:not(:disabled) {
+  background-color: #ff4b3e;
+}
+
+.place-bet-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .betting-options,
+  .more-options {
+    flex-direction: column;
+  }
+  
+  .bet-option {
+    margin: 5px 0;
+  }
+}
+
+/* src/components/betting/ActiveBets.css */
+.active-bets {
+  margin-top: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.active-bets h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.bets-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.bet-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.bet-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.bet-header {
+  background: linear-gradient(to right, #3498db, #2ecc71);
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bet-type {
+  font-weight: bold;
+}
+
+.bet-date {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.bet-details {
+  padding: 15px;
+}
+
+.bet-details p {
+  margin: 8px 0;
+  color: #2c3e50;
+}
+
+.bet-actions {
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+}
+
+.bet-actions button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.resolve-win {
+  background-color: #2ecc71;
+  color: white;
+}
+
+.resolve-win:hover {
+  background-color: #27ae60;
+}
+
+.resolve-loss {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.resolve-loss:hover {
+  background-color: #c0392b;
+}
+
+@media (max-width: 768px) {
+  .bets-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* src/components/betting/UserBalance.css */
+.user-balance {
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.balance-display {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.balance-label {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.balance-amount {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3498db;
+  margin: 0 10px;
+}
+
+.deposit-button {
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.deposit-button:hover {
+  background-color: #27ae60;
+}
+
+.deposit-form {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.deposit-form label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+}
+
+.deposit-form input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.confirm-deposit {
+  width: 100%;
+  padding: 10px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.confirm-deposit:hover {
+  background-color: #2980b9;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

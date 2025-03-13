@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 
-const Navbar = () => {
+const Navbar = ({ navigateTo }) => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -15,9 +15,9 @@ const Navbar = () => {
         </a>
         
         <div className="navbar-links">
-          <a href="/" className="navbar-link active">Competiciones</a>
-          <a href="/equipos" className="navbar-link">Equipos</a>
-          <a href="/partidos" className="navbar-link">Partidos</a>
+          <a onClick={() => navigateTo && navigateTo('competitions')} style={{cursor: 'pointer'}}>Competiciones</a>
+          <a onClick={() => navigateTo && navigateTo('equipos')} style={{cursor: 'pointer'}}>Equipos</a>
+          <a onClick={() => navigateTo && navigateTo('apuestas')} style={{cursor: 'pointer'}}>Apuestas</a>
         </div>
       </div>
     </nav>

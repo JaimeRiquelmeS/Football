@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { getCompetitions, getTeamsByCompetition, getLastMatchByTeam, getMatchPlayers } from '../services/footballService';
+import { getCompetitions, getTeamsByCompetition, getNextMatchByTeam, getMatchPlayers } from '../services/footballService';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import CompetitionSelector from './CompetitionSelector';
 import TeamSelector from './TeamSelector';
-import LastMatch from './LastMatch';
+import NextMatch from './NextMatch';
 import './Competitions.css';
 
-const Competitions = () => {
+const Competitions = ({ navigateTo }) => {
   const [competitions, setCompetitions] = useState([]);
   const [selectedCompetition, setSelectedCompetition] = useState(null);
   const [teams, setTeams] = useState([]);
   const [selectedTeam, setSelectedTeam] = useState(null);
-  const [lastMatch, setLastMatch] = useState(null);
+  const [nextMatch, setNextMatch] = useState(null);
   const [matchPlayers, setMatchPlayers] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -37,7 +37,7 @@ const Competitions = () => {
     const competitionId = event.target.value;
     setSelectedCompetition(competitionId);
     setSelectedTeam(null);
-    setLastMatch(null);
+    setNextMatch(null);
     setMatchPlayers(null);
     setLoading(true);
     setError(null);
@@ -56,18 +56,18 @@ const Competitions = () => {
     setSelectedTeam(teamId);
     setLoading(true);
     setError(null);
-    setLastMatch(null);
+    setNextMatch(null);
     setMatchPlayers(null);
 
     try {
-      console.log('Buscando último partido para el equipo:', teamId);
-      const match = await getLastMatchByTeam(selectedCompetition, teamId);
+      console.log('Buscando próximo partido para el equipo:', teamId);
+      const match = await getNextMatchByTeam(selectedCompetition, teamId);
       
       if (match) {
-        setLastMatch({ match: match });
+        setNextMatch({ match: match });
         
         if (match.id) {
-          console.log('Buscando jugadores del partido:', match.id);
+          console.log('Buscando información del partido:', match.id);
           try {
             const playersData = await getMatchPlayers(match.id);
             
@@ -86,7 +86,7 @@ const Competitions = () => {
           setError('No se puede obtener información de jugadores para este partido');
         }
       } else {
-        setError('No se encontró información del último partido para este equipo');
+        setError('No se encontró información del próximo partido para este equipo');
       }
     } catch (error) {
       console.error('Error en handleTeamChange:', error);
@@ -98,7 +98,7 @@ const Competitions = () => {
 
   return (
     <div className="app-container">
-      <Navbar />
+      <Navbar navigateTo={navigateTo} />
       <main className="main-content">
         <div className="container">
           <h1 className="page-title">Competiciones</h1>
@@ -118,7 +118,7 @@ const Competitions = () => {
             onTeamChange={handleTeamChange}
           />
 
-          <LastMatch match={lastMatch} players={matchPlayers} />
+          <NextMatch match={nextMatch} players={matchPlayers} />
         </div>
       </main>
       <Footer />
